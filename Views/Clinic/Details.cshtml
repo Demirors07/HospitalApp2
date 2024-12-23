@@ -1,0 +1,27 @@
+@model HospitalApp.Models.Clinic
+
+<h1>Details for @Model.Name</h1>
+
+<h2>Doctors:</h2>
+
+<table class="table">
+            <thead>
+                <tr>
+                    <th>Doctor</th>
+                     <th>Doctor ID</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                @foreach (var doctor in Model.Doctors)  
+                {
+                    <tr>
+                        <td>@doctor.Name </td>
+                        <td>@doctor.Id</td>
+               
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+<anch href="/Clinic/Index">Back to Clinic List</anch>

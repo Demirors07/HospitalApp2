@@ -1,0 +1,15 @@
+@model Doctor
+
+<form asp-controller="Admin" asp-action="AddDoctor" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"> Name</label>
+        <input asp-for="Name" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ClinicId" class="form-label"> Clinic Id</label>
+        <input asp-for="ClinicId" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save changes</button>
+</form>

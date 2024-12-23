@@ -1,0 +1,14 @@
+@model IEnumerable<HospitalApp.Models.Clinic>
+
+<h1>Clinic List</h1>
+
+<ul>
+    @foreach (var clinic in Model)
+    {
+        <li>
+            <anch href="/Clinic/Details/@clinic.Id">
+                @clinic.Name  @clinic.Id
+            </anch>
+        </li>
+    }
+</ul>

@@ -1,0 +1,15 @@
+@model Clinic
+
+<form asp-controller="Admin" asp-action="EditClinic" method="post">
+    <input type="hidden" asp-for="Id">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input asp-for="Name" class="form-control">
+          <div class="mb-3">
+        <label asp-for="Id" class="form-label"> Clinic Id</label>
+        <input asp-for="Id" class="form-control">
+    </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>

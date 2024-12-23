@@ -1,0 +1,71 @@
+@model HospitalApp.ViewModels.AdminAppointmentViewModel
+
+<h2>All Appointments</h2>
+
+<div>
+    <h3>Past Appointments</h3>
+    @if (Model.PastAppointments.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Clinic</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var appointment in Model.PastAppointments)
+                {
+                    <tr>
+                        <td>@appointment.PatientId</td> <!-- Alternatif olarak hasta adı çekilebilir -->
+                        <td>@appointment.Doctor?.Name ?? "Unknown"</td>
+                        <td>@appointment.Clinic?.Name ?? "Unknown"</td>
+                        <td>@appointment.AppointmentDate.ToShortDateString()</td>
+                        <td>@appointment.AppointmentTime.ToString(@"hh\:mm")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No past appointments found.</p>
+    }
+</div>
+
+<div>
+    <h3>Upcoming Appointments</h3>
+    @if (Model.UpcomingAppointments.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Clinic</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var appointment in Model.UpcomingAppointments)
+                {
+                    <tr>
+                        <td>@appointment.PatientId</td> <!-- Alternatif olarak hasta adı çekilebilir -->
+                        <td>@appointment.Doctor?.Name ?? "Unknown"</td>
+                        <td>@appointment.Clinic?.Name ?? "Unknown"</td>
+                        <td>@appointment.AppointmentDate.ToShortDateString()</td>
+                        <td>@appointment.AppointmentTime.ToString(@"hh\:mm")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No upcoming appointments found.</p>
+    }
+</div>

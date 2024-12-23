@@ -1,0 +1,41 @@
+@using HospitalApp.Models
+@model Appointment
+
+<h2>Available Times</h2>
+
+<p>Doctor ID: @Model.DoctorId</p> <!-- Displays the ID of the selected doctor -->
+<p>Date: @Model.AppointmentDate.ToShortDateString()</p> <!-- Displays the appointment date in short format -->
+<p>Doctor Name: @ViewBag.DName</p> <!-- Gets the name of the doctor from the ViewBag -->
+
+<!-- A form to select an appointment time -->
+<form asp-action="AvailableTimes" method="post">
+    <input type="hidden" name="DoctorId" value="@Model.DoctorId" />
+    <input type="hidden" name="AppointmentDate" value="@Model.AppointmentDate" />
+    <input type="hidden" name="ClinicId" value="@Model.ClinicId" />
+    <input type="hidden" name="PatientId" value="@Model.PatientId" />
+
+    <label for="AppointmentTime">Select a Time</label> <!-- Label for time selection -->
+    <select id="Time" name="AppointmentTime" class="form-control">
+        @if (ViewBag.time != null)
+        {
+            @foreach (var time in ViewBag.time)
+            {
+                <option value="@time">@time</option>
+            }
+        }
+        else
+        {
+            <option disabled>No times available</option>
+        }
+    </select>
+    <span asp-validation-for="AppointmentTime" class="text-danger"></span>
+
+    @if (ViewData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger mt-3">
+            @ViewData["ErrorMessage"]
+        </div>
+    }
+
+    <button type="submit" class="btn btn-primary mt-3">Book Appointment</button>  <!-- Appointment creation button -->
+</form>

@@ -1,0 +1,14 @@
+@model IEnumerable<HospitalApp.Models.Doctor>
+
+<h1>Delete Doctors</h1>
+
+<ul>
+    @foreach (var doctor in Model)
+    {
+        <li>
+            <anch href="/Admin/DeleteDoctor/@doctor.Id">
+                @doctor.Name
+            </anch>
+        </li>
+    }
+</ul>
